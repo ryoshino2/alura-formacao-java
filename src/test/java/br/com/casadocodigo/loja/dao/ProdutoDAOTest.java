@@ -38,6 +38,6 @@ public class ProdutoDAOTest {
 	    livrosEbook.stream().forEach(produtoDao::gravar);
 	    
 	    BigDecimal valor = produtoDao.somaPrecosPorTipo(TipoPreco.EBOOK);
-	    Assert.assertEquals(new BigDecimal(40).setScale(2), valor);
+	    Assert.assertEquals(new BigDecimal(199.40).setScale(2), valor);
 	}
 }

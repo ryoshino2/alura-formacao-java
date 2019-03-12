@@ -13,10 +13,11 @@ public class DataSourceConfigurationTest {
 	@Profile("test")
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo_test");
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
+		dataSource.setUsername("ryoshino");
+		dataSource.setPassword("password");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/casadocodigo");
+		dataSource.setDriverClassName("org.postgresql.Driver");
+
 		return dataSource;
 	}
 

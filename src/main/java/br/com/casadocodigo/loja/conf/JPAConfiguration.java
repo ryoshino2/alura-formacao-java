@@ -38,7 +38,7 @@ public class JPAConfiguration {
 	@Profile("dev")
 	public Properties additionalProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		//propriedade para mostra o DDL gerado como log
@@ -50,10 +50,11 @@ public class JPAConfiguration {
 	@Profile("dev")
 	private DriverManagerDataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
-		dataSource.setUrl("jdbc:mysql://localhost/casadocodigo");
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUsername("ryoshino");
+		dataSource.setPassword("password");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/casadocodigo");
+		dataSource.setDriverClassName("org.postgresql.Driver");
+
 		return dataSource;
 	}
 
