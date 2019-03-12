@@ -4,12 +4,13 @@ import br.com.casadocodigo.loja.dao.ProdutoDAO;
 import br.com.casadocodigo.loja.models.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -21,15 +22,14 @@ public class RelatorioProdutoController {
 
     @RequestMapping( method=RequestMethod.GET)
     @ResponseBody
-    public List<Produto> relatorioProduto(){
+    public  List<Produto> relatorioProduto(String data) throws Exception{
         List<Produto> produtos = produtoDAO.listar();
-        return produtos;
+        if(data == null) data = "0000-00-00";
+        System.out.println(data);
+        Calendar calendar = Calendar.getInstance();
+        Date formatter = new SimpleDateFormat("yyyy-MM-dd").parse(data);
+        calendar.setTime(formatter);
+        return produtoDAO.findDate(calendar);
     }
 
-    @RequestMapping(value = "/{dataLancamento}", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Produto> findDate(@PathVariable("dataLancamento") Calendar dataLancamento){
-        List<Produto> produtos = (List<Produto>) produtoDAO.findDate(dataLancamento);
-        return produtos;
-    }
 }
