@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@RequestMapping("/pedidos")
+@RequestMapping("/casadocodigo/pedidos")
 @Controller
 public class PedidosServicoController {
 
@@ -18,7 +18,7 @@ public class PedidosServicoController {
     private RestTemplate restTemplate;
 
     @GetMapping
-    public ModelAndView finalizar(RedirectAttributes model) {
+    public ModelAndView listar(RedirectAttributes model) {
         String uri = "https://book-payment.herokuapp.com/orders";
         try {
             Pedidos[] response = restTemplate.getForObject(uri, Pedidos[].class);

@@ -1,8 +1,10 @@
 package br.com.casadocodigo.loja.dao;
 
-import java.math.BigDecimal;
-import java.util.List;
-
+import br.com.casadocodigo.loja.builders.ProdutoBuilder;
+import br.com.casadocodigo.loja.conf.DataSourceConfigurationTest;
+import br.com.casadocodigo.loja.conf.JPAConfiguration;
+import br.com.casadocodigo.loja.models.Produto;
+import br.com.casadocodigo.loja.models.TipoPreco;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,11 +14,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.casadocodigo.loja.builders.ProdutoBuilder;
-import br.com.casadocodigo.loja.conf.DataSourceConfigurationTest;
-import br.com.casadocodigo.loja.conf.JPAConfiguration;
-import br.com.casadocodigo.loja.models.Produto;
-import br.com.casadocodigo.loja.models.TipoPreco;
+import java.math.BigDecimal;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes= {JPAConfiguration.class, ProdutoDAO.class, DataSourceConfigurationTest.class})

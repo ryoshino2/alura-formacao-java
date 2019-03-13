@@ -1,20 +1,16 @@
 package br.com.casadocodigo.loja.dao;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import br.com.casadocodigo.loja.models.Produto;
+import br.com.casadocodigo.loja.models.TipoPreco;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import br.com.casadocodigo.loja.models.Produto;
-import br.com.casadocodigo.loja.models.TipoPreco;
+import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -23,8 +19,8 @@ public class ProdutoDAO {
 	@PersistenceContext
 	private EntityManager manager;
 	
-	public void gravar(Produto produto) {
-		manager.persist(produto);
+	public void gravar(Produto produtos) {
+		manager.persist(produtos);
 	}
 
 	public List<Produto> listar() {
@@ -33,7 +29,7 @@ public class ProdutoDAO {
 	}
 
 	public Produto find(Integer id) {
-        return manager.createQuery("select distinct(p) from Produto p join fetch p.precos precos where p.id = :id", 
+        return manager.createQuery("select distinct(p) from Produto p join fetch p.precos precos where p.id = :id",
         		Produto.class).setParameter("id", id)
         		.getSingleResult();
 	}

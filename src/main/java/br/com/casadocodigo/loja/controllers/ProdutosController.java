@@ -1,10 +1,10 @@
 package br.com.casadocodigo.loja.controllers;
 
-import java.util.List;
-
-import javax.persistence.NoResultException;
-import javax.validation.Valid;
-
+import br.com.casadocodigo.loja.dao.ProdutoDAO;
+import br.com.casadocodigo.loja.infra.FileSaver;
+import br.com.casadocodigo.loja.models.Produto;
+import br.com.casadocodigo.loja.models.TipoPreco;
+import br.com.casadocodigo.loja.validation.ProdutoValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Controller;
@@ -15,11 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.casadocodigo.loja.dao.ProdutoDAO;
-import br.com.casadocodigo.loja.infra.FileSaver;
-import br.com.casadocodigo.loja.models.Produto;
-import br.com.casadocodigo.loja.models.TipoPreco;
-import br.com.casadocodigo.loja.validation.ProdutoValidation;
+import javax.persistence.NoResultException;
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/produtos")
@@ -38,14 +36,14 @@ public class ProdutosController {
 
 	@RequestMapping("/form")
 	public ModelAndView form(Produto produto) {
-		ModelAndView modelAndView = new ModelAndView("produtos/form");
+		ModelAndView modelAndView = new ModelAndView("/produtos/form");
 		modelAndView.addObject("tipos", TipoPreco.values());
 		return modelAndView;
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@CacheEvict(value="produtosHome", allEntries=true)
-	public ModelAndView gravar(MultipartFile sumario, @Valid Produto produto, BindingResult result, 
+	public ModelAndView gravar(MultipartFile sumario, @Valid Produto produto, BindingResult result,
 				RedirectAttributes redirectAttributes){
 		
 		if(result.hasErrors()) {
@@ -65,7 +63,7 @@ public class ProdutosController {
 	@RequestMapping( method=RequestMethod.GET)
 	public ModelAndView listar() {
 		List<Produto> produtos = dao.listar();
-		ModelAndView modelAndView = new ModelAndView("produtos/lista");
+		ModelAndView modelAndView = new ModelAndView("/produtos/lista");
 		modelAndView.addObject("produtos", produtos);
 		return modelAndView;
 	}

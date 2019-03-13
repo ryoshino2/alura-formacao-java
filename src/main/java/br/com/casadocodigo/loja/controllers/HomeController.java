@@ -1,27 +1,21 @@
 package br.com.casadocodigo.loja.controllers;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
-
+import br.com.casadocodigo.loja.dao.ProdutoDAO;
+import br.com.casadocodigo.loja.dao.RoleDAO;
+import br.com.casadocodigo.loja.dao.UsuarioDAO;
+import br.com.casadocodigo.loja.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.casadocodigo.loja.dao.ProdutoDAO;
-import br.com.casadocodigo.loja.dao.RoleDAO;
-import br.com.casadocodigo.loja.dao.UsuarioDAO;
-import br.com.casadocodigo.loja.models.Preco;
-import br.com.casadocodigo.loja.models.Produto;
-import br.com.casadocodigo.loja.models.Role;
-import br.com.casadocodigo.loja.models.TipoPreco;
-import br.com.casadocodigo.loja.models.Usuario;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -49,17 +43,17 @@ public class HomeController {
 	@Transactional
 	public String urlMagicaMaluca() {
 		
-		Produto produto1 = criarProduto(502, new GregorianCalendar(2016, 6, 15), 
+		Produto produto1 = criarProduto(502, new GregorianCalendar(2016, 6, 15),
 				"Java SE 8 Programmer I", "O guia para sua certificação Oracle Certified Associate", new String[] {"29.9", "39.9", "79.9"} );
-		Produto produto2 = criarProduto(172, new GregorianCalendar(2017, 11, 21), 
+		Produto produto2 = criarProduto(172, new GregorianCalendar(2017, 11, 21),
 				"Orientação a Objetos", "Aprenda seus conceitos e suas aplicabilidades de forma efetiva", new String[] {"29.9", "49.9", "59.9"}  );
-		Produto produto3 = criarProduto(260, new GregorianCalendar(2018, 2, 2), 
+		Produto produto3 = criarProduto(260, new GregorianCalendar(2018, 2, 2),
 				"Spring MVC", "Domine o principal framework web Java", new String[] {"19.9", "29.9", "39.9"}  );
-		Produto produto4 = criarProduto(234, new GregorianCalendar(2017, 11, 11), 
+		Produto produto4 = criarProduto(234, new GregorianCalendar(2017, 11, 11),
 				"Amazon AWS", "Descomplicando a computação na nuvem", new String[] {"29.9", "69.9", "79.9"}  );
-		Produto produto5 = criarProduto(355, new GregorianCalendar(2018, 7, 2), 
+		Produto produto5 = criarProduto(355, new GregorianCalendar(2018, 7, 2),
 				"Introdução à Arquitetura e Design de Software", "Uma visão sobre a plataforma Java", new String[] {"29.9", "69.9", "79.9"}  );
-		Produto produto6 = criarProduto(151, new GregorianCalendar(2017, 3, 4), 
+		Produto produto6 = criarProduto(151, new GregorianCalendar(2017, 3, 4),
 				"Java 8 Prático", "Lambdas, Streams e os novos recursos da linguagem", new String[] {"19.9", "49.9", "69.9"}  );
 		
 		produtoDao.gravar(produto1);

@@ -1,13 +1,13 @@
 package br.com.casadocodigo.loja.builders;
 
+import br.com.casadocodigo.loja.models.Preco;
+import br.com.casadocodigo.loja.models.Produto;
+import br.com.casadocodigo.loja.models.TipoPreco;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import br.com.casadocodigo.loja.models.Preco;
-import br.com.casadocodigo.loja.models.Produto;
-import br.com.casadocodigo.loja.models.TipoPreco;
 
 public class ProdutoBuilder {
 

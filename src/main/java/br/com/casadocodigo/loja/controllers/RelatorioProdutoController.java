@@ -23,9 +23,7 @@ public class RelatorioProdutoController {
     @RequestMapping( method=RequestMethod.GET)
     @ResponseBody
     public  List<Produto> relatorioProduto(String data) throws Exception{
-        List<Produto> produtos = produtoDAO.listar();
         if(data == null) data = "0000-00-00";
-        System.out.println(data);
         Calendar calendar = Calendar.getInstance();
         Date formatter = new SimpleDateFormat("yyyy-MM-dd").parse(data);
         calendar.setTime(formatter);

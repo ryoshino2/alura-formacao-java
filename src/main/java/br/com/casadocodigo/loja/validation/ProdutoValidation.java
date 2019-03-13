@@ -1,16 +1,15 @@
 package br.com.casadocodigo.loja.validation;
 
+import br.com.casadocodigo.loja.models.Produto;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-
-import br.com.casadocodigo.loja.models.Produtos;
 
 public class ProdutoValidation implements Validator{
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return Produtos.class.isAssignableFrom(clazz);
+        return Produto.class.isAssignableFrom(clazz);
     }
 
     @Override
@@ -18,7 +17,7 @@ public class ProdutoValidation implements Validator{
         ValidationUtils.rejectIfEmpty(errors, "titulo", "field.required");
         ValidationUtils.rejectIfEmpty(errors, "descricao", "field.required");
 
-        Produtos produto = (Produtos) target;
+        Produto produto = (Produto) target;
         if(produto.getPaginas() <= 0) {
             errors.rejectValue("paginas", "field.required");
         }

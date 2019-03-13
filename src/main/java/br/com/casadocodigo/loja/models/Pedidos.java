@@ -25,7 +25,7 @@ public class Pedidos implements Serializable {
     private Calendar data;
 
     @JsonProperty("produtos")
-    private List<Produtos> produtos;
+    private List<Produto> produtos;
 
     public int getId() {
         return id;
@@ -45,10 +45,10 @@ public class Pedidos implements Serializable {
     public void setData(Calendar data) {
         this.data = data;
     }
-    public List<Produtos> getProdutos() {
+    public List<Produto> getProdutos() {
         return produtos;
     }
-    public void setProdutos(List<Produtos> produtos) {
+    public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
     public Pedidos() {
