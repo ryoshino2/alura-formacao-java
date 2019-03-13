@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-<%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="security"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
 
+<c:url value="/" var="contextPath" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,8 +43,6 @@ body {
 						de Produtos</a></li>
 				<li class="nav-item"><a href="${s:mvcUrl('PC#form').build()}">Cadastro
 						de Produtos</a></li>
-				<li class="nav-item"><a
-					href="${s:mvcUrl('PSC#listar').build()} ">Lista de Pedidos</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="nav-item"><a href="#"> <security:authentication
@@ -61,7 +59,7 @@ body {
 	<div class="container">
 		<h1>Cadastro de Produto</h1>
 		<form:form action="${s:mvcUrl('PC#gravar').build() }" method="post"
-			modelAttribute="produtos" enctype="multipart/form-data">
+			modelAttribute="produto" enctype="multipart/form-data">
 			<div class="form-group">
 				<label>Titulo</label>
 				<form:input path="titulo" cssClass="form-control" />
